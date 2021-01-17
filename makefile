@@ -1,10 +1,7 @@
 COMP = g++-10
 
-
-GOOGLETEST_LIB = /Users/adam/googletest/install/lib #/usr/local/opt/googletest/lib #/usr/src/googletest/googletest/gcc-10-build/lib/
-GOOGLETEST_INCLUDE = /Users/adam/googletest/googletest/include
-#GOOGLETEST_LIB = /usr/src/googletest/googletest/gcc-10-build/lib/
-#GOOGLETEST_INCLUDE = /usr/src/googletest/googletest/include/
+GOOGLETEST_LIB = /usr/src/googletest/googletest/gcc-10-build/lib/
+GOOGLETEST_INCLUDE = /usr/src/googletest/googletest/include/
 
 #put all your object files here
 OBJS = tests.o main.o 
