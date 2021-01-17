@@ -5,8 +5,7 @@
 
 TEST(GISEx4, DocTest) {
     Coordinates coord{Longitude{20}, Latitude{30}};
-    Grid<int, 7> grid;
-    const Grid::Cell* cell = grid.getCellAt(coord); // assume ‘coord’ was defined already above
+    // const Grid::Cell* cell = grid.getCellAt(coord); 
     // auto viewD = cell->getEntitiesView<D>(); // O(1), always, even for size == N
     // assert ( viewD.size() == 0 ); // assume passed successfully
     // // adding a D object to the Grid, such that it should be added to the cell at coord
