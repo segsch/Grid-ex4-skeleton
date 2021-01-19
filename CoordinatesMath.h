@@ -477,5 +477,10 @@ public:
 		const double destination_longitude = initial_longitude + atan2(y, x);
 		return rads2Coordinates(destination_longitude, destination_latitude);
 	}
+	
+	static Meters perimeterOnLatitude(Latitude lat) {
+		const auto r = earth_radius * cos(deg2rad(lat));
+		return 2 * std::numbers::pi * r;
+	}
 };
 
