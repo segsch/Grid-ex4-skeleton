@@ -32,25 +32,6 @@ class Grid {
             return std::vector<Entity*>{};
         }
 
-        // (Cell::A2) (NOTE: you may choose not to implemnt this function - fine 1pt)
-        // same as (Cell::A1) above but for a given circle (that may be in the cell or not, partially or in a whole).
-        template<typename PredicateFunc>
-        std::vector<Entity*> getEntities(Coordinates center, Meters radius, PredicateFunc&&) const {
-            (void) center; 
-            (void) radius; 
-            return std::vector<Entity*>{};
-        }
-
-        // (Cell::A3) (REMOVED: No need to implement)
-        // same as (Cell::A1) above but with a limit on the number of returned entities (up to limit entities).
-        // template<typename PredicateFunc>
-        //     std::vector<Entity*> getEntities(PredicateFunc&&, std::size_t limit) const;
-
-        // (Cell::A4) (REMOVED: No need to implement)
-        // same as (Cell::A2) above but with a limit on the number of returned entities (up to limit entities).
-        // template<typename PredicateFunc>
-        //     std::vector<Entity*> getEntities(Coordinates center, Meters radius, PredicateFunc&&, std::size_t limit) const;
-
         // (Cell::B1) 
         // Getting specific type of Entities from a Cell:
         // returns all entities of type ActualT which return true for the PredicateFunc.
@@ -61,16 +42,7 @@ class Grid {
             return std::vector<ActualT*>{};
         }
 
-        // (Cell::B2) (NOTE: you may choose not to implemnt this function - fine 1pt)
-        // same as (Cell::B1) above, with a limiting circle.
-        template<typename ActualT, typename PredicateFunc> requires concrete_derived_or_same<ActualT, Entity>
-        std::vector<ActualT*> getEntities(Coordinates center, Meters radius, PredicateFunc&&) const {
-            (void) center; 
-            (void) radius; 
-            return std::vector<ActualT*>{};
-        }
-
-        // (Cell::B3) 
+        // (Cell::B2) 
         // same as (Cell::B1) above but with a limit on the number of returned entities (up to limit entities).
         template<typename ActualT, typename PredicateFunc> requires concrete_derived_or_same<ActualT, Entity>
         std::vector<ActualT*> getEntities(PredicateFunc&&, std::size_t limit) const {
@@ -79,17 +51,7 @@ class Grid {
             return std::vector<ActualT*>{};
         }
 
-        // (Cell::B4) (NOTE: you may choose not to implemnt this function - fine 1pt)
-        // same as (Cell::B2) above but with a limit on the number of returned entities (up to limit entities).
-        template<typename ActualT, typename PredicateFunc> requires concrete_derived_or_same<ActualT, Entity>
-        std::vector<ActualT*> getEntities(Coordinates center, Meters radius, PredicateFunc&&, std::size_t limit) const {
-            (void) center; 
-            (void) radius; 
-            (void) limit; 
-            return std::vector<ActualT*>{};
-        }
-
-        // (Cell::B5) 
+        // (Cell::B3) 
         // returns a range of all entities of type ActualT.
         // Complexity of this function is required to be O(1)
         // This function returns a view that is updated “behind the scene” automatically in case additional objects of type ActualT are added to this Cell via the Grid. Order of entities in the view shall be the same as the order of their insertion to the grid.
@@ -150,24 +112,6 @@ public:
         static Cell dummy_cell1{};
         return &dummy_cell1;
     }
-    
-    // (Grid::A2) (BONUS: you may choose not to implemnt this function)
-    template<typename ActualT> requires derived_or_same<ActualT, Entity>
-    std::vector<const Cell*> add(Coordinates from, Coordinates to, ActualT& e) {
-        (void) from; 
-        (void) to; 
-        (void) e;
-        return std::vector<const Cell*>{};
-    }
-
-    // (Grid::A3) (NOTE: you may choose not to implemnt this function - fine 1pt)
-    template<typename ActualT> requires derived_or_same<ActualT, Entity>
-    std::vector<const Cell*> add(Coordinates center, Meters radius, ActualT& e) {
-        (void) center; 
-        (void) radius; 
-        (void) e;
-        return std::vector<const Cell*>{};
-    }
 
     // Getting Cells from the Grid:
 
@@ -179,62 +123,27 @@ public:
         return &dummy_cell2;
     }
 
-    // (Grid::B2) (NOTE: you may choose not to implemnt this function - fine 1pt)
+    // (Grid::B2) (BONUS: you may choose not to implemnt this function)
     std::vector<const Cell*> getCellsAt(Coordinates center, Meters radius) const {
         (void) center; 
         (void) radius; 
         return std::vector<const Cell*>{};
     }
 
-    // Getting Entities from the Grid:
-    
-    // (Grid::C1) (NOTE: you may choose not to implemnt this function - fine 1pt)
-    // returns all entities in and on the circle, which return true for the PredicateFunc.
-    template<typename PredicateFunc>
-    std::vector<Entity*> getEntities(Coordinates center, Meters radius, PredicateFunc&&) const {
-        (void) center; 
-        (void) radius; 
-        return std::vector<Entity*>{};
-    }
-
-    // (Grid::C2) (REMOVED: No need to implement)
-    // same as (1) above but with a limit on the number of returned entities (up to limit entities).
-    // template<typename PredicateFunc>
-    // std::vector<Entity*> getEntities(Coordinates center, Meters radius, PredicateFunc&&, std::size_t limit) const;
-
-    // (Grid::D1) (NOTE: you may choose not to implemnt this function - fine 1pt)
-    // Getting specific type of Entities from the Grid:
-    // returns all entities of type ActualT in and on the circle, which return true for the PredicateFunc.
-    template<typename ActualT, typename PredicateFunc> requires concrete_derived_or_same<ActualT, Entity>
-    std::vector<ActualT*> getEntities(Coordinates center, Meters radius, PredicateFunc&&) const {
-        (void) center; 
-        (void) radius; 
-        return std::vector<ActualT*>{};
-    }
-
-    // (Grid::D2) (NOTE: you may choose not to implemnt this function - fine 1pt)
-    // same as (Grid::D1) above but with a limit on the number of returned entities (up to limit entities).
-    template<typename ActualT, typename PredicateFunc> requires concrete_derived_or_same<ActualT, Entity>
-    std::vector<ActualT*> getEntities(Coordinates center, Meters radius, PredicateFunc&&, std::size_t limit) const {
-        (void) center; 
-        (void) radius; 
-        (void) limit; 
-    }
-
     // additional auxiliary functions:
 
-    // (Grid::E1) 
+    // (Grid::C1) 
     std::size_t numRows() const noexcept {
         return num_rows;
     } 
     
-    // (Grid::E2) 
+    // (Grid::C2) 
     std::size_t numCols(Coordinates c) const noexcept {
         // TODO: implement  
         return 13;
     }
 
-    // (Grid::E3) 
+    // (Grid::C3) 
     std::size_t numCells() const noexcept {
         // TODO: implement  
         return 432; 
