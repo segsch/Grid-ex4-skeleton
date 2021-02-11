@@ -161,13 +161,13 @@ public:
 
     auto begin() const noexcept { 
         // TODO: implement
-        static std::vector<Cell&> stub_vec1;
+        static std::vector<const Cell&> stub_vec1;
         return stub_vec1.begin(); 
     }
 
     auto end() const noexcept { 
         // TODO: implement
-        static std::vector<Cell&> stub_vec2;
+        static std::vector<const Cell&> stub_vec2;
         return stub_vec2.end(); 
     }
 };
